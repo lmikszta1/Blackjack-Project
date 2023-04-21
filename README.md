@@ -58,13 +58,13 @@ font-family: 'Inconsolata', monospace;
     7. number of chips remaining display area
 4. Upon loading the app should:
     - Initialize the state variables
-    - playerHand and dealerHand are undefined until deal button is clicked
+    - playerHand and dealerHand are undefined until bet/deal button is clicked
     - betAmount is undefined
     - numOfChips set to 5000
     - deck array initialized to be full of ordered cards
     - shuffledDeck array is a copy of deck that has been shuffled
-    - Render the shuffledDeck face down
-    - Render the deal button (optional at first, add if time)
+    - Render the shuffledDeck face down (only back of top card will be displayed)
+    - Render the deal button (optional at first bet will do this, add if time)
     - Render the number of chips remaining
     - Render the bet amount field and bet/deal button
     - Wait for user interaction
@@ -82,16 +82,17 @@ font-family: 'Inconsolata', monospace;
     - If there is a bust, do not return bet chips and display loss message
     - If the total value of the player hand after the hit is less than 21, wait for user interaction
 7. Handle the player choosing to stand
-    - Execute the dealer functionality
+    - Execute the dealer functionality(hit until they reach 17)
     - If dealer busts player automatically wins
         - display winning message
         - distribute winnings
-    - If the dealer is closer to 21 than they player, display the loss message (Ex: total player card value is 17 and total dealer card value is 19)
+    - If the dealer is closer to 21 than they player, display the loss message and do not return chips(Ex: total player card value is 17 and total dealer card value is 19)
     - If the dealer and the player total card values are the same, return chips bet to player and display push message
+    - If the player is closer to 21 than the dealer, display the win message and distribute winnings
 8. Determine win/loss/push
     - check for 21(blackjack)
     - check if player card total is closer to 21 than the dealer
-    - after win/loss/push and chips have been distributed accordingly, reset and shuffle the deck
+    - after win/loss/push and chips have been distributed accordingly, reset both hands and shuffle the deck
 
 ## State variables
 - players hand
