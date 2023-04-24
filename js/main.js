@@ -8,7 +8,9 @@ const originalDeck = buildOriginalDeck();
 let shuffledDeck;
 let numOfChips;
 let playerHand;
+let playerValue;
 let dealerHand;
+let dealerValue;
 let betAmount;
 let dealtCard;
 
@@ -17,9 +19,11 @@ const deckContainer = document.getElementById('deck-container');
 const chipDisplayArea = document.getElementById('chips');
 const playerHandContainer = document.getElementById('player-container')
 const dealerHandContainer = document.getElementById('dealer-container')
+const messageContainer = document.getElementById('message-area')
 
 /*----- event listeners -----*/
 
+document.querySelector('#bet-button').addEventListener('click', handleBet)
 
 /*----- functions -----*/
 function init(){
@@ -89,15 +93,27 @@ function renderDeckInContainer(deck, container) {
 function dealCard(hand){
     dealtCard = shuffledDeck.splice(0, 1)[0];
     hand.push(dealtCard);
+
 }
 
 function renderHandInContainer(hand, container){
     container.innerHTML = '';
 
     let cardsHtml = '';
-    hand.forEach(function(card) {
-        cardsHtml += `<div class="card ${card.face}"></div>`;
-    })
+    if(hand === dealerHand){
+        for(let i = 0; i < hand.length; i++){
+            if(i === 0){
+                cardsHtml += `<div class="card large back-red ${hand[i].face}"></div>`;
+            } else{
+                cardsHtml += `<div class="card large ${hand[i].face}"></div>`;
+            }
+        }
+    } else{
+        hand.forEach(function(card) {
+            cardsHtml += `<div class="card large ${card.face}"></div>`;
+        })
+    }
+    
     container.innerHTML = cardsHtml;
 }
 
@@ -106,14 +122,42 @@ function handleBet(){
     numOfChips -= betAmount;
     renderChips();
     let count = 0
-    while(count <= 4){
+    while(count <= 3){
         if(count % 2 === 0){
             dealCard(playerHand);
         }else{
             dealCard(dealerHand);
         }
+        count++
+        for(card of playerHand) {
+            playerValue += card.value
+        }
+        for(card of dealerHand) {
+            dealerValue += card.value
+        }
     }
+    
+    checkWinner();
+
     renderHandInContainer(playerHand, playerHandContainer);
     renderHandInContainer(dealerHand, dealerHandContainer);
+}
+
+function checkWinner() {
+    if(playerValue === 21){
+        messageContainer.innerHTML = `You win ${betAmount} chips!`
+        numOfChips += betAmount * 2;
+    } else if((21 - playerValue) > (21 - dealerValue)){
+        messageContainer.innerHTML = `You lose ${betAmount} chips!`
+    } else if(playerValue > 21){
+        messageContainer.innerHTML = `BUST!! You lose ${betAmount} chips!`
+    } else if((21 - playerValue) < (21 - dealerValue)){
+        messageContainer.innerHTML = `You win ${betAmount} chips!`
+        numOfChips += betAmount * 2;
+    }
+}
+
+function handleHit(hand){
+    dealCard(hand);
 }
 
