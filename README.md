@@ -34,7 +34,7 @@ Blackjack is a casino banking game. It is the most widely played casino banking 
 font-family: 'Inconsolata', monospace;
 ```
 ## Wireframe:
-- <img src="https://i.imgur.com/BchliSZ.jpg" alt="Wireframe"/>
+<img src="https://i.imgur.com/BchliSZ.jpg" alt="Wireframe"/>
     
 ## Pseudocode
 1. Define required constants
