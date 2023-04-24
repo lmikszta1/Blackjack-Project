@@ -12,8 +12,9 @@ header {
     justify-content: center;
     align-items: center;
     font-size: 100px;
-    letter-spacing: 2vmin;
+    letter-spacing: 4vmin;
     font-weight: bold;
+    color: #dfdcd8;
 }
 
 h2 {
@@ -21,25 +22,48 @@ h2 {
     justify-content: center;
     align-items: center;
     font-size: 4vmin;
-    padding-top: 4vmin;
+    padding-top: 3vmin;
+    color: #dfdcd8;
 }
 
-.gameArea {
+input{
+    background-color: #722F37;
+    color: #dfdcd8;
+    font-family: 'Inconsolata', monospace;
+    font-size: 2.5vmin;
+}
+
+button {
+    background-color: #722F37;
+    color: #dfdcd8;
+    font-family: 'Inconsolata', monospace;
+    font-size: 2.5vmin;
+    border-radius: 5vmin;
+}
+
+.game-area {
     display: flex;
-    border: 4px solid black;
+    flex-direction: column;
+    /* border: 4px solid #722f37; */
 }
 
-.gameButtons {
+.game-buttons {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.bettingArea {
+.betting-area {
     display: flex;
     flex-flow: column wrap;
     align-items: flex-end;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    gap: 10px 30px;
+    color: #dfdcd8;
+}
+
+.deck {
+    margin-left: 200px;
 }
 
 .bet {
