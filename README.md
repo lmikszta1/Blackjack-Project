@@ -47,6 +47,7 @@ font-family: 'Inconsolata', monospace;
     4. numOfChips - amount of chips the player has available to bet (5000 on init)
     5. deck - array of cards
     6. shuffledDeck - shuffled array of cards
+    7. dealtCard - the card being dealt to the player or dealer
 3. Cached DOM elements
     1. playerCards and dealerCards
     2. bet button (acts as a deal button as well)
@@ -76,7 +77,7 @@ font-family: 'Inconsolata', monospace;
     - Check if the player has blackjack(21)
     - If no blackjack, wait for user to choose whether to hit or stand
 6. Handle the player choosing to hit
-    - Deal the player one more card
+    - Deal the player one more card (dealtCard)
     - Add the value of the new card to the total value
     - Check for a bust (player card value is greater than 21)
     - If there is a bust, do not return bet chips and display loss message
@@ -118,4 +119,8 @@ let deck
 - deck of shuffled cards
 ```javascript
 let shuffledDeck
+```
+- the card currently being dealt
+```javascript
+let dealtCard
 ```
