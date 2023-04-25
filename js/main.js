@@ -218,6 +218,10 @@ function checkWinner() {
         messageContainer.innerHTML = `You win ${betAmount} chips!`
         numOfChips += betAmount * 2;
         renderChips();
+    } else if(playerValue === dealerValue && stand){
+        messageContainer.innerHTML = `PUSH! The dealer and player have the same value. Chips returned.`
+        numOfChips += betAmount;
+        renderChips();
     }
     
 }
@@ -237,6 +241,7 @@ function handleHit(hand){
 }
 
 function handleStand(hand){
+    stand = true;
     while(dealerValue < 17){
         dealCard(hand);
         dealerValue += dealtCard.value;
@@ -246,6 +251,5 @@ function handleStand(hand){
         }
         renderHandInContainer(hand, dealerHandContainer);
     }
-    stand = true;
     checkWinner();
 }
