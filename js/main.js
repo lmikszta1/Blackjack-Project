@@ -108,7 +108,8 @@ function renderDeckInContainer(deck, container) {
 function dealCard(hand){
     dealtCard = shuffledDeck.splice(0, 1)[0];
     hand.push(dealtCard);
-    if(dealtCard.face === 'A'){
+    console.log(dealtCard.value)
+    if(dealtCard.value === 11){
         if(hand === playerHand){
             playerAceCount++;
         } else{
@@ -203,7 +204,7 @@ function checkBlackjack(){
 
 function checkWinner() {
     if(playerValue === 21){
-        messageContainer.innerHTML = `You win ${betAmount} chips!`
+        messageContainer.innerHTML = `You win ${betAmount} chips! Dealer had ${dealerValue}.`
         numOfChips += betAmount * 2;
         renderChips();
     } else if(playerValue > 21 && playerAceCount === 0){
@@ -215,7 +216,7 @@ function checkWinner() {
     } else if((21 - playerValue) > (21 - dealerValue) && stand){
         messageContainer.innerHTML = `You lose ${betAmount} chips! Dealer had: ${dealerValue}.`
     } else if((21 - playerValue) < (21 - dealerValue) && stand){
-        messageContainer.innerHTML = `You win ${betAmount} chips!`
+        messageContainer.innerHTML = `You win ${betAmount} chips! Dealer had: ${dealerValue}.`
         numOfChips += betAmount * 2;
         renderChips();
     } else if(playerValue === dealerValue && stand){
@@ -230,7 +231,7 @@ function handleHit(hand){
     dealCard(hand);
     playerValue += dealtCard.value;
     renderHandInContainer(hand, playerHandContainer);
-    if( playerValue !== 21){
+    if( playerValue < 21){
         messageContainer.innerHTML = `Hit or stand? Your card value is: ${playerValue}.`;
     } else if(playerValue > 21 && playerAceCount !== 0){
         playerValue -= 10;
