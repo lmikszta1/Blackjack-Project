@@ -13,6 +13,9 @@ let dealerHand;
 let dealerValue;
 let betAmount;
 let dealtCard;
+let stand;
+let dealerAceCount;
+let playerAceCount;
 
 /*----- cached elements  -----*/
 const deckContainer = document.getElementById('deck-container');
@@ -30,7 +33,11 @@ function init(){
     numOfChips = 5000;
     playerHand = [];
     dealerHand = [];
-
+    stand = false;
+    playerAceCount = 0;
+    dealerAceCount = 0;
+    dealerValue = 0;
+    playerValue = 0;
     render()
 }
 init()
@@ -93,7 +100,13 @@ function renderDeckInContainer(deck, container) {
 function dealCard(hand){
     dealtCard = shuffledDeck.splice(0, 1)[0];
     hand.push(dealtCard);
-
+    if(dealtCard.face === 'A'){
+        if(hand === playerHand){
+            playerAceCount++;
+        } else{
+            dealerAceCount++;
+        }
+    }
 }
 
 function renderHandInContainer(hand, container){
@@ -129,14 +142,17 @@ function handleBet(){
             dealCard(dealerHand);
         }
         count++
-        for(card of playerHand) {
-            playerValue += card.value
-        }
-        for(card of dealerHand) {
-            dealerValue += card.value
-        }
     }
-    
+    for(card of playerHand) {
+        playerValue += card.value
+    }
+    for(card of dealerHand) {
+        dealerValue += card.value
+    }
+    if( playerValue !== 21){
+        messageContainer.innerHTML = `Hit or stand? Your card value is: ${playerValue}.`;
+    }
+
     checkWinner();
 
     renderHandInContainer(playerHand, playerHandContainer);
@@ -147,17 +163,20 @@ function checkWinner() {
     if(playerValue === 21){
         messageContainer.innerHTML = `You win ${betAmount} chips!`
         numOfChips += betAmount * 2;
-    } else if((21 - playerValue) > (21 - dealerValue)){
-        messageContainer.innerHTML = `You lose ${betAmount} chips!`
-    } else if(playerValue > 21){
+    } else if(playerValue > 21 && playerAceCount === 0){
         messageContainer.innerHTML = `BUST!! You lose ${betAmount} chips!`
-    } else if((21 - playerValue) < (21 - dealerValue)){
+    } else if(playerValue > 21 && playerAceCount !== 0){
+        playerValue -= 10;
+        messageContainer.innerHTML = `Hit or stand? Your card value is: ${playerValue}.`
+    } else if((21 - playerValue) > (21 - dealerValue) && stand){
+        messageContainer.innerHTML = `You lose ${betAmount} chips!`
+    } else if((21 - playerValue) < (21 - dealerValue) && stand){
         messageContainer.innerHTML = `You win ${betAmount} chips!`
         numOfChips += betAmount * 2;
     }
+    
 }
 
 function handleHit(hand){
     dealCard(hand);
 }
-
