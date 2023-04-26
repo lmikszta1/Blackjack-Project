@@ -1,10 +1,12 @@
 /*----- constants -----*/
+
 const suits = ['s', 'c', 'd', 'h'];
 const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
 
 const originalDeck = buildOriginalDeck();
 
 /*----- state variables -----*/
+
 let shuffledDeck;
 let numOfChips;
 let playerHand;
@@ -36,6 +38,7 @@ document.querySelector('#stand-button').addEventListener('click', function(){
 })
 
 /*----- functions -----*/
+
 function init(){
     numOfChips = 5000;
     playerHand = [];
@@ -108,7 +111,6 @@ function renderDeckInContainer(deck, container) {
 function dealCard(hand){
     dealtCard = shuffledDeck.splice(0, 1)[0];
     hand.push(dealtCard);
-    console.log(dealtCard.value)
     if(dealtCard.value === 11){
         if(hand === playerHand){
             playerAceCount++;
@@ -140,12 +142,21 @@ function renderHandInContainer(hand, container){
 }
 
 function handleBet(){
+    document.getElementById('hit-button').disabled = false;
+    document.getElementById('stand-button').disabled = false;
     betAmount = Number(document.getElementById('bet').value);
+    if(numOfChips - betAmount < 0){
+        messageContainer.innerHTML = 'Not enough chips!';
+        return
+    } else if(betAmount <= 0){
+        messageContainer.innerHTML = 'Bet must be greater than 0!';
+        return
+    }
     numOfChips -= betAmount;
     renderChips();
     resetHands();
     let count = 0
-    if(shuffledDeck.length <= 5){
+    if(shuffledDeck.length <= 11){
         shuffledDeck = getNewShuffledDeck();
     }
     while(count <= 3){
@@ -164,8 +175,10 @@ function handleBet(){
     }
     if(dealerAceCount === 2){
         dealerValue = 12;
+        dealerAceCount = 0;
     } else if(playerAceCount === 2){
         playerValue = 12;
+        playerAceCount = 0;
     }
 
     if( playerValue !== 21){
@@ -176,7 +189,6 @@ function handleBet(){
     if(!blackjack){
         checkWinner();
     }
-    // checkWinner();
 
     renderHandInContainer(playerHand, playerHandContainer);
     renderHandInContainer(dealerHand, dealerHandContainer);
@@ -204,25 +216,32 @@ function checkBlackjack(){
 
 function checkWinner() {
     if(playerValue === 21){
-        messageContainer.innerHTML = `You win ${betAmount} chips! Dealer had ${dealerValue}.`
+        messageContainer.innerHTML = `21! You win ${betAmount} chips! Dealer had: ${dealerValue}.`
         numOfChips += betAmount * 2;
         renderChips();
+        document.getElementById('stand-button').disabled = true;
     } else if(playerValue > 21 && playerAceCount === 0){
         messageContainer.innerHTML = `BUST!! You lose ${betAmount} chips!`
+        document.getElementById('stand-button').disabled = true;
+        document.getElementById('hit-button').disabled = true;
     } else if(dealerValue > 21){
         messageContainer.innerHTML = `You win ${betAmount} chips! Dealer bust!`
         numOfChips += betAmount * 2;
         renderChips();
+        document.getElementById('stand-button').disabled = true;
     } else if((21 - playerValue) > (21 - dealerValue) && stand){
         messageContainer.innerHTML = `You lose ${betAmount} chips! Dealer had: ${dealerValue}.`
+        document.getElementById('stand-button').disabled = true;
     } else if((21 - playerValue) < (21 - dealerValue) && stand){
         messageContainer.innerHTML = `You win ${betAmount} chips! Dealer had: ${dealerValue}.`
+        document.getElementById('stand-button').disabled = true;
         numOfChips += betAmount * 2;
         renderChips();
     } else if(playerValue === dealerValue && stand){
         messageContainer.innerHTML = `PUSH! The dealer and player have the same value. Chips returned.`
         numOfChips += betAmount;
         renderChips();
+        document.getElementById('stand-button').disabled = true;
     }
     
 }
@@ -253,4 +272,6 @@ function handleStand(hand){
         renderHandInContainer(hand, dealerHandContainer);
     }
     checkWinner();
+    document.getElementById('hit-button').disabled = true;
 }
+
