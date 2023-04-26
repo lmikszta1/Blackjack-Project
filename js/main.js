@@ -223,6 +223,7 @@ function checkWinner() {
         numOfChips += betAmount * 2;
         renderChips();
         document.getElementById('stand-button').disabled = true;
+        document.getElementById('hit-button').disabled = true;
         flipDealerCard()
     } else if(playerValue > 21 && playerAceCount === 0){
         messageContainer.innerHTML = `BUST!! You lose ${betAmount} chips!`
