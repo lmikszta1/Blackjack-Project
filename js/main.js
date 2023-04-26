@@ -220,28 +220,34 @@ function checkWinner() {
         numOfChips += betAmount * 2;
         renderChips();
         document.getElementById('stand-button').disabled = true;
+        flipDealerCard()
     } else if(playerValue > 21 && playerAceCount === 0){
         messageContainer.innerHTML = `BUST!! You lose ${betAmount} chips!`
         document.getElementById('stand-button').disabled = true;
         document.getElementById('hit-button').disabled = true;
+        flipDealerCard();
     } else if(dealerValue > 21){
         messageContainer.innerHTML = `You win ${betAmount} chips! Dealer bust!`
         numOfChips += betAmount * 2;
         renderChips();
         document.getElementById('stand-button').disabled = true;
+        flipDealerCard()
     } else if((21 - playerValue) > (21 - dealerValue) && stand){
         messageContainer.innerHTML = `You lose ${betAmount} chips! Dealer had: ${dealerValue}.`
         document.getElementById('stand-button').disabled = true;
+        flipDealerCard();
     } else if((21 - playerValue) < (21 - dealerValue) && stand){
         messageContainer.innerHTML = `You win ${betAmount} chips! Dealer had: ${dealerValue}.`
         document.getElementById('stand-button').disabled = true;
         numOfChips += betAmount * 2;
         renderChips();
+        flipDealerCard()
     } else if(playerValue === dealerValue && stand){
         messageContainer.innerHTML = `PUSH! The dealer and player have the same value. Chips returned.`
         numOfChips += betAmount;
         renderChips();
         document.getElementById('stand-button').disabled = true;
+        flipDealerCard()
     }
     
 }
@@ -275,3 +281,11 @@ function handleStand(hand){
     document.getElementById('hit-button').disabled = true;
 }
 
+function flipDealerCard(){
+    let flippedCardHtml = ''
+    dealerHandContainer.innerHTML = ''
+    dealerHand.forEach(function(card) {
+        flippedCardHtml += `<div class="card large ${card.face}"></div>`
+    })
+    dealerHandContainer.innerHTML = flippedCardHtml;
+}
