@@ -21,6 +21,7 @@ let playerAceCount;
 let blackjack;
 
 /*----- cached elements  -----*/
+
 const deckContainer = document.getElementById('deck-container');
 const chipDisplayArea = document.getElementById('chips');
 const playerHandContainer = document.getElementById('player-container')
@@ -142,8 +143,6 @@ function renderHandInContainer(hand, container){
 }
 
 function handleBet(){
-    document.getElementById('hit-button').disabled = false;
-    document.getElementById('stand-button').disabled = false;
     betAmount = Number(document.getElementById('bet').value);
     if(numOfChips - betAmount < 0){
         messageContainer.innerHTML = 'Not enough chips!';
@@ -180,11 +179,13 @@ function handleBet(){
         playerValue = 12;
         playerAceCount = 0;
     }
-
+    
     if( playerValue !== 21){
         messageContainer.innerHTML = `Hit or stand? Your card value is: ${playerValue}.`;
     }
-
+    document.getElementById('hit-button').disabled = false;
+    document.getElementById('stand-button').disabled = false;
+    
     checkBlackjack();
     if(!blackjack){
         checkWinner();
@@ -210,6 +211,8 @@ function checkBlackjack(){
         messageContainer.innerHTML = `BLACKJACK!! You win ${betAmount * 1.5} chips!`
         numOfChips += betAmount * 2.5;
         renderChips();
+        document.getElementById('stand-button').disabled = true;
+        document.getElementById('hit-button').disabled = true;
         blackjack = true;
     }
 }
