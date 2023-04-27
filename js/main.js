@@ -22,8 +22,8 @@ let blackjack;
 
 /*----- cached elements  -----*/
 
-const deckContainer = document.getElementById('deck-container');
-const chipDisplayArea = document.getElementById('chips');
+const deckContainer = document.getElementById('deck-container')
+const chipDisplayArea = document.getElementById('chips')
 const playerHandContainer = document.getElementById('player-container')
 const dealerHandContainer = document.getElementById('dealer-container')
 const messageContainer = document.getElementById('message-area')
@@ -40,6 +40,7 @@ document.querySelector('#stand-button').addEventListener('click', function(){
 
 /*----- functions -----*/
 
+// initializer
 function init(){
     numOfChips = 5000;
     playerHand = [];
@@ -50,10 +51,14 @@ function init(){
     dealerValue = 0;
     playerValue = 0;
     blackjack = false;
+    document.getElementById('hit-button').disabled = true;
+    document.getElementById('stand-button').disabled = true;
     render()
 }
+// run init function
 init()
 
+// render function
 function render() {
     renderShuffledDeck()
     renderChips()
@@ -82,6 +87,7 @@ function renderShuffledDeck(){
     renderDeckInContainer(shuffledDeck, deckContainer);
 }
 
+// function for rendering chips remaining
 function renderChips(){
     chipDisplayArea.innerHTML = `${numOfChips} Chips Remaining`;
 }
@@ -109,6 +115,7 @@ function renderDeckInContainer(deck, container) {
     container.innerHTML = cardHtml;
 }
 
+// function to deal a card
 function dealCard(hand){
     dealtCard = shuffledDeck.splice(0, 1)[0];
     hand.push(dealtCard);
@@ -121,6 +128,7 @@ function dealCard(hand){
     }
 }
 
+// function to render a hand
 function renderHandInContainer(hand, container){
     container.innerHTML = '';
 
@@ -142,6 +150,8 @@ function renderHandInContainer(hand, container){
     container.innerHTML = cardsHtml;
 }
 
+
+// bet button handler
 function handleBet(){
     betAmount = Number(document.getElementById('bet').value);
     if(numOfChips - betAmount < 0){
@@ -195,6 +205,7 @@ function handleBet(){
     renderHandInContainer(dealerHand, dealerHandContainer);
 }
 
+// function to reset the hands and associated variables
 function resetHands(){
     playerHand = [];
     dealerHand = [];
@@ -206,6 +217,7 @@ function resetHands(){
     blackjack = false;
 }
 
+// function to check for blackjack
 function checkBlackjack(){
     if(playerValue === 21){
         messageContainer.innerHTML = `BLACKJACK!! You win ${betAmount * 1.5} chips!`
@@ -217,6 +229,7 @@ function checkBlackjack(){
     }
 }
 
+// function to check for a win
 function checkWinner() {
     if(playerValue === 21){
         messageContainer.innerHTML = `21! You win ${betAmount} chips! Dealer had: ${dealerValue}.`
@@ -256,6 +269,7 @@ function checkWinner() {
     
 }
 
+// hit button handler
 function handleHit(hand){
     dealCard(hand);
     playerValue += dealtCard.value;
@@ -270,6 +284,7 @@ function handleHit(hand){
     checkWinner();
 }
 
+// stand button handler
 function handleStand(hand){
     stand = true;
     while(dealerValue < 17){
@@ -285,6 +300,7 @@ function handleStand(hand){
     document.getElementById('hit-button').disabled = true;
 }
 
+// function to flip the dealer's first card
 function flipDealerCard(){
     let flippedCardHtml = ''
     dealerHandContainer.innerHTML = ''

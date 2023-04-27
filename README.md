@@ -1,5 +1,5 @@
 # ♤ ♡ BLACKJACK ♢ ♧
-
+## Getting Started
 Blackjack is a casino banking game. It is the most widely played casino banking game in the world. It uses decks of 52 cards and descends from a global family of casino banking games known as Twenty-One. (via [Wikipedia](https://en.wikipedia.org/wiki/Blackjack)) The player and the dealer are dealt 2 cards each initially. The dealer has one card face-up and the other face-down. Both of the player cards will be face up. Each card has a numerical value assigned to it. The goal of the game is to reach a sum of those numerical card values that is as close to or equal to 21 without going over 21. You have the option to hit or stand every turn. A hit will add another card from the deck to your hand. Standing will keep the current hand the same. Once all players have chosen to stand, the full hands are revealed and winners are decided. Winners are decided based on 2 things: (1) The hand is equal to 21 in numerical value, or (2) The hand is closer to 21 in numerical value than that of the dealers hand, without going over 21. Going over 21 at any point in the game results in a bust and the hand is lost. 
 
 ## User Stories:
@@ -15,8 +15,8 @@ Blackjack is a casino banking game. It is the most widely played casino banking 
 - I want to return the chips bet to the player if the player and the dealer have the same card values. (Ex: dealer has 19 and player also has 19) **This is called a push**
 
 ## Icebox items:
-- Feature to win 1.5x bet amount if blackjack is hit. (Ex: initial bet is 500, recieve 1250 total chips back after blackjack so +750 chips overall)
-- Feature for splitting cards. (If both cards dealt are the same, the player can split the 2 cards into separate hands essentially giving them 2 chances to win. This will take whatever the amount bet is and put the same bet on the new hand as well, essentially doubling the bet amount)
+- Feature to win 1.5x bet amount if blackjack is hit. (Ex: initial bet is 500, recieve 1250 total chips back after blackjack so +750 chips overall) **THIS HAS BEEN HIT**
+- Feature for splitting cards. (If both cards dealt are the same, the player can split the 2 cards into separate hands essentially giving them 2 chances to win. This will take whatever the amount bet is and put the same bet on the new hand as well, essentially doubling the bet amount) 
 - Change theme feature
 - If a hand has already been played, when the deal button is clicked, bet the same amount as the last hand on the new hand automatically
 
@@ -32,6 +32,15 @@ Blackjack is a casino banking game. It is the most widely played casino banking 
 ```
 ```css
 font-family: 'Inconsolata', monospace;
+```
+- Font Pacifico
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+```
+```css
+font-family: 'Pacifico', cursive;
 ```
 ## Wireframe:
 <img src="https://i.imgur.com/BchliSZ.jpg" alt="Wireframe"/>
@@ -124,3 +133,13 @@ let shuffledDeck
 ```javascript
 let dealtCard
 ```
+
+## Technologies used
+- CSS
+- HTML
+- Javascript
+
+## Game screenshots
+<img src="https://i.imgur.com/Cfd1y7O.png" alt="Initial Screen">
+<img src="https://i.imgur.com/V7uyoTj.png" alt="Screen after hitting bet">
+<img src="https://i.imgur.com/IsUcKRs.png" alt="Screen after standing">

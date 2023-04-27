@@ -11,9 +11,10 @@ body {
 header {
     font-family: 'Pacifico', cursive;
     display: flex;
+    flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-    font-size: 100px;
+    font-size: 80px;
     letter-spacing: 4vmin;
     color: #852928;
 }
@@ -22,7 +23,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 4vmin;
+    font-size: 3.5vmin;
     padding-top: 3vmin;
     margin-bottom: 0.5px;
     color: #dfdcd8;
@@ -35,12 +36,20 @@ input{
     font-size: 2.5vmin;
 }
 
+input:hover {
+    background-color: #942c2b;
+}
+
 button {
     background-color: #852928;
     color: #dfdcd8;
     font-family: 'Inconsolata', monospace;
     font-size: 32px;
     border-radius: 5vmin;
+}
+
+button:hover {
+    background-color: #942c2b;
 }
 
 .game-area {
