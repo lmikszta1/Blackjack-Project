@@ -53,6 +53,8 @@ function init(){
     blackjack = false;
     document.getElementById('hit-button').disabled = true;
     document.getElementById('stand-button').disabled = true;
+    document.getElementById('hit-button').hidden = true;
+    document.getElementById('stand-button').hidden = true;
     render()
 }
 // run init function
@@ -195,6 +197,8 @@ function handleBet(){
     }
     document.getElementById('hit-button').disabled = false;
     document.getElementById('stand-button').disabled = false;
+    document.getElementById('hit-button').hidden = false;
+    document.getElementById('stand-button').hidden = false;
     
     checkBlackjack();
     if(!blackjack){
