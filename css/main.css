@@ -16,7 +16,7 @@ header {
     align-items: center;
     font-size: 80px;
     letter-spacing: 4vmin;
-    color: #6a211f;
+    color: cornsilk;
 }
 
 h2 {
@@ -26,12 +26,12 @@ h2 {
     font-size: 3.5vmin;
     padding-top: 3vmin;
     margin-bottom: 0.5px;
-    color: #dfdcd8;
+    color: cornsilk;
 }
 
 input{
     background-color: #6a211f;
-    color: #dfdcd8;
+    color: cornsilk;
     font-family: 'Inconsolata', monospace;
     font-size: 2.5vmin;
 }
@@ -42,7 +42,7 @@ input:hover {
 
 button {
     background-color: #852928;
-    color: #dfdcd8;
+    color: cornsilk;
     font-family: 'Inconsolata', monospace;
     font-size: 32px;
     border-radius: 5vmin;
@@ -71,7 +71,7 @@ button:hover {
     align-items: flex-end;
     justify-content: space-evenly;
     gap: 10px 30px;
-    color: #dfdcd8;
+    color: cornsilk;
     font-size: 24px;
 }
 
