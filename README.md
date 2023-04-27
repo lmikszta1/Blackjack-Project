@@ -10,9 +10,10 @@ Blackjack is a casino banking game. It is the most widely played casino banking 
 - Javascript
 
 ## Game screenshots
-<img src="https://i.imgur.com/Cfd1y7O.png" alt="Initial Screen">
-<img src="https://i.imgur.com/V7uyoTj.png" alt="Screen after hitting bet">
-<img src="https://i.imgur.com/IsUcKRs.png" alt="Screen after standing">
+<img src="https://i.imgur.com/PJkOFfk.png" alt="Initial Screen">
+<img src="https://i.imgur.com/5SWh3es.png" alt="Screen after hitting bet">
+<img src="https://i.imgur.com/zZEeXcR.png" alt="Screen after standing">
+<img src="https://i.imgur.com/C9uR5HI.png" alt="Screen after a bust">
 
 ## Next Steps
 - Feature for splitting cards. (If both cards dealt are the same, the player can split the 2 cards into separate hands essentially giving them 2 chances to win. This will take whatever the amount bet is and put the same bet on the new hand as well, essentially doubling the bet amount) 
