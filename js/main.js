@@ -150,7 +150,6 @@ function renderHandInContainer(hand, container){
     container.innerHTML = cardsHtml;
 }
 
-
 // bet button handler
 function handleBet(){
     betAmount = Number(document.getElementById('bet').value);
