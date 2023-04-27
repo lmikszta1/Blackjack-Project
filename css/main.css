@@ -16,7 +16,7 @@ header {
     align-items: center;
     font-size: 80px;
     letter-spacing: 4vmin;
-    color: #852928;
+    color: #6a211f;
 }
 
 h2 {
@@ -30,7 +30,7 @@ h2 {
 }
 
 input{
-    background-color: #852928;
+    background-color: #6a211f;
     color: #dfdcd8;
     font-family: 'Inconsolata', monospace;
     font-size: 2.5vmin;

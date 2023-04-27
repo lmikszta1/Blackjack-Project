@@ -133,7 +133,6 @@ function dealCard(hand){
 // function to render a hand
 function renderHandInContainer(hand, container){
     container.innerHTML = '';
-
     let cardsHtml = '';
     if(hand === dealerHand){
         for(let i = 0; i < hand.length; i++){
@@ -148,7 +147,6 @@ function renderHandInContainer(hand, container){
             cardsHtml += `<div class="card large ${card.face}"></div>`;
         })
     }
-    
     container.innerHTML = cardsHtml;
 }
 
@@ -191,7 +189,6 @@ function handleBet(){
         playerValue = 12;
         playerAceCount = 0;
     }
-    
     if( playerValue !== 21){
         messageContainer.innerHTML = `Hit or stand? Your card value is: ${playerValue}.`;
     }
@@ -204,7 +201,7 @@ function handleBet(){
     if(!blackjack){
         checkWinner();
     }
-
+    
     renderHandInContainer(playerHand, playerHandContainer);
     renderHandInContainer(dealerHand, dealerHandContainer);
 }
@@ -270,7 +267,6 @@ function checkWinner() {
         document.getElementById('stand-button').disabled = true;
         flipDealerCard()
     }
-    
 }
 
 // hit button handler
