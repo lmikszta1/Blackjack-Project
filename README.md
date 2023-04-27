@@ -25,4 +25,4 @@ Blackjack is a casino banking game. It is the most widely played casino banking 
 
 - Feature for splitting cards. (If both cards dealt are the same, the player can split the 2 cards into separate hands essentially giving them 2 chances to win. This will take whatever the amount bet is and put the same bet on the new hand as well, essentially doubling the bet amount)
 - Change theme feature
-- If a hand has already been played, when the deal button is clicked, bet the same amount as the last hand on the new hand automatically
+- Make the game mobile friendly
