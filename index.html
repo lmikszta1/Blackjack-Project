@@ -9,27 +9,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <script defer src="js/main.js"></script>
     <title>Blackjack!!</title>
 </head>
 
 <body>
-    <header>BLACKJACK</header>
-    <h2 id="message-area">Blackjack!</h2>
+    <header>♤♡ Blackjack ♢♧</header>
+    <h2 id="message-area"></h2>
     <section class="betting-area">
         <label for="bet">Input bet amount: </label>
         <input type="number" id="bet" value="0" />
-        <button class="bet">BET</button>
+        <button id="bet-button">BET</button>
         <h3 id="chips">5000 Chips Remaining</h3>
     </section>
-    <div id= "deck-container" class="deck"></div>
     <section class="game-area">
         <div id="dealer-container" class="handContainer"></div>
+        <div id= "deck-container" class="deck"></div>
         <div id="player-container" class="handContainer"></div>
     </section>
     <section class="game-buttons">
-        <button class="hit">HIT</button>
-        <button class="stand">STAND</button>
+        <button id="stand-button">STAND</button>
+        <button id="hit-button">HIT</button>
     </section>
     
 

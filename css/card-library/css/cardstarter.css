@@ -2,7 +2,7 @@
 .card {
   box-sizing: border-box;
   display: inline-block;
-  margin: 5px 5px 50px 5px;
+  margin: 5px 5px 15px 5px;
   cursor: pointer;
   /* Set the card's dimensions, and size it relative to
      it's font size. */
@@ -29,9 +29,9 @@
   .card.small {
     font-size: 12px; }
   .card.large {
-    font-size: 26px; }
+    font-size: 35px; }
   .card.xlarge {
-    font-size: 42px; }
+    font-size: 45px; }
   .card.no-border {
     border: 0; }
   .card.shadow {
