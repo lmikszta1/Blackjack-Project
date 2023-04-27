@@ -8,6 +8,7 @@ Blackjack is a casino banking game. It is the most widely played casino banking 
 - CSS
 - HTML
 - Javascript
+- CardStarter CSS Library
 
 ## Game screenshots
 <img src="https://i.imgur.com/PJkOFfk.png" alt="Initial Screen">
